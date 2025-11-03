@@ -2,6 +2,9 @@ Terms and Conditions Generator
 
 This is a simple, single-file HTML, CSS (via Tailwind), and JavaScript tool to help website owners generate a basic Terms and Conditions draft. It provides a user-friendly form that covers common sections found in a T&C agreement.
 
+Demo
+https://ramonriosjr.github.io/terms-and-conditions-generator/
+
 Features
 
 Single-File: Fully self-contained in one .html file. No external dependencies besides Tailwind CSS (loaded via CDN).
