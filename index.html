@@ -198,9 +198,29 @@
                 <p class="text-sm text-gray-500 mt-2">A clause stating that users will defend and hold your company harmless from legal claims arising from their use of the site.</p>
             </fieldset>
 
-            <!-- Section 11: Contact -->
+            <!-- Section 11: Severability -->
             <fieldset>
-                <legend>11. Contact Information</legend>
+                <legend>11. Severability</legend>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="severability" checked>
+                    <label for="severability">Include a severability clause?</label>
+                </div>
+                <p class="text-sm text-gray-500 mt-2">States that if one part of the terms is invalid, the rest still apply. (Recommended)</p>
+            </fieldset>
+
+            <!-- Section 12: Entire Agreement -->
+            <fieldset>
+                <legend>12. Entire Agreement</legend>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="entire-agreement" checked>
+                    <label for="entire-agreement">Include an entire agreement clause?</label>
+                </div>
+                <p class="text-sm text-gray-500 mt-2">States that these Terms are the complete agreement, superseding all prior ones. (Recommended)</p>
+            </fieldset>
+
+            <!-- Section 13: Contact -->
+            <fieldset>
+                <legend>13. Contact Information</legend>
                 <label for="contact-email">Contact Email or Page:</label>
                 <input type="text" id="contact-email" placeholder="e.g., support@coqui.cloud or https://coqui.cloud/contactus">
             </fieldset>
@@ -249,7 +269,8 @@
             </div>
 
             <p class="text-sm text-center text-red-600 font-semibold mt-4">
-                **LEGAL DISCLAIMER:** This is a template, not legal advice. You must consult with a qualified legal professional to ensure this policy is compliant and suitable for your needs.
+                <strong>Not Legal Advice</strong><br>
+                This tool generates a basic template for informational purposes only. It is <strong>NOT</strong> a substitute for professional legal advice. You are responsible for ensuring your final policy complies with all applicable laws (like GDPR, CCPA, etc.). You must consult with a qualified legal professional to ensure this policy is compliant and suitable for your needs.
             </p>
         </div>
 
@@ -349,6 +370,18 @@
                         text += `You hereby agree to indemnify to the fullest extent ${companyName} from and against any and all liabilities, costs, demands, causes of action, damages, and expenses (including reasonable attorney's fees) arising out of or in any way related to your breach of any of the provisions of these Terms.\n\n`;
                     }
 
+                    // --- Severability ---
+                    if (document.getElementById('severability').checked) {
+                        text += `===== SEVERABILITY =====\n\n`;
+                        text += `If any provision of these Terms is found to be unenforceable or invalid under any applicable law, such unenforceability or invalidity shall not render these Terms unenforceable or invalid as a whole, and such provisions shall be deleted without affecting the remaining provisions herein.\n\n`;
+                    }
+
+                    // --- Entire Agreement ---
+                    if (document.getElementById('entire-agreement').checked) {
+                        text += `===== ENTIRE AGREEMENT =====\n\n`;
+                        text += `These Terms, including any legal notices and disclaimers contained on this Service, constitute the entire agreement between ${companyName} and you in relation to your use of this Service, and supersede all prior agreements and understandings with respect to the same.\n\n`;
+                    }
+
                     // --- Governing Law ---
                     text += `===== GOVERNING LAW =====\n\n`;
                     text += `These Terms will be governed by and construed in accordance with the laws of ${location}, and you submit to the non-exclusive jurisdiction of the state and federal courts located in ${location} for the resolution of any disputes.\n\n`;
@@ -397,5 +430,3 @@
     </script>
 </body>
 </html>
-
-
