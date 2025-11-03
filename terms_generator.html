@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        fieldset {
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        legend {
+            font-size: 1.125rem;
+            font-weight: 600;
+            padding: 0 0.5rem;
+        }
+        label {
+            font-weight: 500;
+        }
+        .checkbox-label {
+            font-weight: 400;
+            margin-left: 0.5rem;
+        }
+        #termsOutput {
+            white-space: pre-wrap;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            min-height: 200px;
+        }
+        #copyButton {
+            display: none; /* Hidden until policy is generated */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-4 md:p-8">
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-4">Terms and Conditions Generator</h1>
+
+        <!-- IMPORTANT DISCLAIMER -->
+        <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded-md" role="alert">
+            <p class="font-bold">Not Legal Advice</p>
+            <p>This tool generates a basic template for informational purposes only. It is **NOT** a substitute for professional legal advice. These terms may not be suitable for your business. You are responsible for ensuring your final document complies with all applicable laws.</p>
+        </div>
+
+        <!-- Generator Form -->
+        <form id="termsForm" class="space-y-6">
+
+            <!-- Section 1: Introduction -->
+            <fieldset>
+                <legend>1. Introduction</legend>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="companyName" class="block text-sm font-medium text-gray-700">Company / Website Name:</label>
+                        <input type="text" id="companyName" placeholder="e.g., Coqui Cloud" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="websiteUrl" class="block text-sm font-medium text-gray-700">Website URL:</label>
+                        <input type="text" id="websiteUrl" placeholder="https://example.com" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Section 2: User Agreement -->
+            <fieldset>
+                <legend>2. User Agreement</legend>
+                 <div>
+                    <label for="agreement" class="block text-sm font-medium text-gray-700">What does your website offer?</label>
+                    <input type="text" id="agreement" placeholder="e.g., IT services, an online store, a blog" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+            </fieldset>
+            
+            <!-- Section 3: User Accounts -->
+            <fieldset>
+                <legend>3. User Accounts</legend>
+                 <div class="flex items-center">
+                    <input id="userAccounts" type="checkbox" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                    <label for="userAccounts" class="checkbox-label">My website allows users to create accounts.</label>
+                </div>
+                <div class="mt-2">
+                    <label for="accountRules" class="block text-sm font-medium text-gray-700">User account rules (if checked):</label>
+                    <textarea id="accountRules" rows="3" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., Users must be 18 or older, must provide accurate information, are responsible for their password..."></textarea>
+                </div>
+            </fieldset>
+
+            <!-- Section 4: Acceptable Use -->
+            <fieldset>
+                <legend>4. Acceptable Use Policy</legend>
+                <span class="text-gray-700 font-medium">Users may NOT use the website to:</span>
+                <div class="mt-2 grid grid-cols-2 md:grid-cols-3 gap-2">
+                    <div class="flex items-center">
+                        <input id="useIllegal" type="checkbox" checked class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <label for="useIllegal" class="checkbox-label">Violate any law</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="useInfringe" type="checkbox" checked class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <label for="useInfringe" class="checkbox-label">Infringe on others' rights</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="useSpam" type="checkbox" checked class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <label for="useSpam" class="checkbox-label">Send spam</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="useVirus" type="checkbox" checked class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <label for="useVirus" class="checkbox-label">Transmit viruses</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="useHarass" type="checkbox" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <label for="useHarass" class="checkbox-label">Harass or abuse others</label>
+                    </div>
+                </div>
+            </fieldset>
+            
+            <!-- Section 5: Intellectual Property -->
+            <fieldset>
+                <legend>5. Intellectual Property</legend>
+                 <div>
+                    <label for="ipOwner" class="block text-sm font-medium text-gray-700">Who owns the content on the site (logo, text, graphics, etc.)?</label>
+                    <input type="text" id="ipOwner" placeholder="e.g., The Company and its licensors" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+            </fieldset>
+
+            <!-- Section 6: Links to Other Websites -->
+            <fieldset>
+                <legend>6. Links to Other Websites</legend>
+                 <div class="flex items-center">
+                    <input id="thirdPartyLinks" type="checkbox" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                    <label for="thirdPartyLinks" class="checkbox-label">Our site contains links to third-party websites.</label>
+                </div>
+            </fieldset>
+            
+            <!-- Section 7: Termination -->
+            <fieldset>
+                <legend>7. Termination</legend>
+                 <div class="flex items-center">
+                    <input id="termination" type="checkbox" checked class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                    <label for="termination" class="checkbox-label">We reserve the right to terminate or suspend user access.</label>
+                </div>
+            </fieldset>
+            
+            <!-- Section 8: Disclaimers & Liability -->
+            <fieldset>
+                <legend>8. Disclaimers & Limitation of Liability</legend>
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <input id="disclaimerAsIs" type="checkbox" checked class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <label for="disclaimerAsIs" class="checkbox-label">Service is provided "AS IS" and "AS AVAILABLE".</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="disclaimerNoWarranty" type="checkbox" checked class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <label for="disclaimerNoWarranty" class="checkbox-label">We make no warranties (express or implied) about the service.</label>
+                    </div>
+                     <div class="flex items-center">
+                        <input id="liabilityLimit" type="checkbox" checked class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <label for="liabilityLimit" class="checkbox-label">Our liability is limited to the fullest extent permitted by law.</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Section 9: Governing Law -->
+            <fieldset>
+                <legend>9. Governing Law</legend>
+                 <div>
+                    <label for="governingLaw" class="block text-sm font-medium text-gray-700">What jurisdiction's laws apply?</label>
+                    <input type="text" id="governingLaw" placeholder="e.g., State of Colorado, United States" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+            </fieldset>
+            
+            <!-- Section 10: Changes to Terms -->
+            <fieldset>
+                <legend>10. Changes to Terms</legend>
+                 <div class="flex items-center">
+                    <input id="changes" type="checkbox" checked class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                    <label for="changes" class="checkbox-label">We reserve the right to modify these terms at any time.</label>
+                </div>
+                 <div class="mt-2">
+                    <label for="changesNotify" class="block text-sm font-medium text-gray-700">How will users be notified of changes?</label>
+                    <input type="text" id="changesNotify" value="By posting the new terms on this page." class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+            </fieldset>
+
+            <!-- Section 11: Contact Us -->
+             <fieldset>
+                <legend>11. Contact Us</legend>
+                 <div>
+                    <label for="contactEmail" class="block text-sm font-medium text-gray-700">Contact Email for questions:</label>
+                    <input type="email" id="contactEmail" placeholder="support@example.com" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+            </fieldset>
+
+            <!-- Generate Button -->
+            <div class="text-center">
+                <button type="button" id="generateButton" class="w-full md:w-auto inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    Generate Terms
+                </button>
+            </div>
+        </form>
+
+        <!-- Output Section -->
+        <div id="outputSection" class="mt-8" style="display: none;">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-semibold text-gray-800">Generated Terms Draft</h2>
+                <button type="button" id="copyButton" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path d="M8 2a1 1 0 00-1 1v1H5a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2h-2V3a1 1 0 00-1-1H8zM5 6h10v10H5V6z" />
+                        <path d="M8 3a1 1 0 000 2h4a1 1 0 100-2H8z" />
+                    </svg>
+                    Copy to Clipboard
+                </button>
+            </div>
+            <div id="termsOutput" aria-live="polite"></div>
+            <p id="copySuccess" class="text-green-600 font-medium mt-2" style="display: none;">Copied to clipboard!</p>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const generateButton = document.getElementById('generateButton');
+        const outputSection = document.getElementById('outputSection');
+        const termsOutput = document.getElementById('termsOutput');
+        const copyButton = document.getElementById('copyButton');
+        const copySuccess = document.getElementById('copySuccess');
+
+        // Helper function to get element value or default
+        const g = (id, def = '') => document.getElementById(id).value || def;
+        // Helper function to check if checkbox is checked
+        const c = (id) => document.getElementById(id).checked;
+
+        generateButton.addEventListener('click', () => {
+            let termsText = '';
+            const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            
+            const company = g('companyName', '[Your Company Name]');
+            const url = g('websiteUrl', '[Your Website URL]');
+
+            // --- 1. Introduction ---
+            termsText += `Terms and Conditions for ${company}\n`;
+            termsText += `Last Updated: ${today}\n\n`;
+            termsText += `Welcome to ${url} (the "Site"), operated by ${company} ("we," "us," or "our").\n\n`;
+            termsText += `These Terms and Conditions ("Terms") govern your access to and use of our Site and the services we offer, such as ${g('agreement', '[describe your services/products]')}. By accessing or using the Site, you agree to be bound by these Terms.\n\n`;
+
+            // --- 2. User Accounts ---
+            if (c('userAccounts')) {
+                termsText += `2. User Accounts\n\n`;
+                termsText += `To access some features of the Site, you may have to create an account. You agree to the following:\n`;
+                const rules = g('accountRules', 'You are responsible for maintaining the confidentiality of your account password. You are responsible for all activities that occur under your account. You must notify us immediately of any unauthorized use of your account.');
+                rules.split('\n').forEach(rule => {
+                    if(rule.trim()) termsText += `• ${rule.trim()}\n`;
+                });
+                termsText += `\n`;
+            }
+
+            // --- 3. Acceptable Use ---
+            termsText += `3. Acceptable Use Policy\n\n`;
+            termsText += `You agree not to use the Site for any unlawful purpose or to:\n`;
+            const prohibitions = [];
+            if (c('useIllegal')) prohibitions.push('Violate any local, state, national, or international law.');
+            if (c('useInfringe')) prohibitions.push('Infringe upon or violate our intellectual property rights or the intellectual property rights of others.');
+            if (c('useHarass')) prohibitions.push('Harass, abuse, insult, harm, defame, slander, disparage, intimidate, or discriminate.');
+            if (c('useSpam')) prohibitions.push('Transmit "junk mail," "chain letters," or any other form of "spam."');
+            if (c('useVirus')) prohibitions.push('Upload or transmit viruses or any other type of malicious code.');
+            
+            if(prohibitions.length > 0) {
+                prohibitions.forEach(p => { termsText += `• ${p}\n`; });
+            } else {
+                termsText += `• Engage in any conduct that restricts or inhibits anyone's use or enjoyment of the Site.\n`;
+            }
+            termsText += `\n`;
+
+            // --- 4. Intellectual Property ---
+            termsText += `4. Intellectual Property\n\n`;
+            termsText += `The Site and its original content, features, and functionality are and will remain the exclusive property of ${g('ipOwner', company + ' and its licensors')}. Our trademarks and trade dress may not be used in connection with any product or service without our prior written consent.\n\n`;
+            
+            // --- 5. Links to Other Websites ---
+            if (c('thirdPartyLinks')) {
+                termsText += `5. Links to Other Websites\n\n`;
+                termsText += `Our Site may contain links to third-party websites or services that are not owned or controlled by us. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party sites. You acknowledge that we are not responsible or liable for any damage or loss caused by or in connection with the use of any such content or services.\n\n`;
+            }
+
+            // --- 6. Termination ---
+            if (c('termination')) {
+                termsText += `6. Termination\n\n`;
+                termsText += `We may terminate or suspend your access to our Site immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.\n\n`;
+            }
+            
+            // --- 7. Disclaimers & Limitation of Liability ---
+            termsText += `7. Disclaimer of Warranties; Limitation of Liability\n\n`;
+            if (c('disclaimerAsIs')) {
+                termsText += `The Site is provided on an "AS IS" and "AS AVAILABLE" basis.\n\n`;
+            }
+            if (c('disclaimerNoWarranty')) {
+                termsText += `We make no warranties, express or implied, regarding the operation of our Site or the information, content, or materials included thereon.\n\n`;
+            }
+             if (c('liabilityLimit')) {
+                termsText += `In no event shall ${company}, nor its directors, employees, or partners, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Site.\n\n`;
+            }
+
+            // --- 8. Governing Law ---
+            termsText += `8. Governing Law\n\n`;
+            termsText += `These Terms shall be governed and construed in accordance with the laws of ${g('governingLaw', '[Your State/Country]')}, without regard to its conflict of law provisions.\n\n`;
+
+            // --- 9. Changes to Terms ---
+            if (c('changes')) {
+                termsText += `9. Changes to These Terms\n\n`;
+                termsText += `We reserve the right, at our sole discretion, to modify or replace these Terms at any time. ${g('changesNotify', 'We will notify you of any changes by posting the new Terms on this page.')}\n\n`;
+            }
+
+            // --- 10. Contact Us ---
+            termsText += `10. Contact Us\n\n`;
+            termsText += `If you have any questions about these Terms, please contact us at:\n`;
+            termsText += `Email: ${g('contactEmail', '[Your Contact Email]')}\n`;
+
+            // Display Output
+            termsOutput.textContent = termsText;
+            outputSection.style.display = 'block';
+            copyButton.style.display = 'inline-flex';
+            copySuccess.style.display = 'none';
+        });
+
+        // Copy to Clipboard Logic
+        copyButton.addEventListener('click', () => {
+            const textToCopy = termsOutput.textContent;
+            
+            // Fallback for iFrame environment
+            const textArea = document.createElement('textarea');
+            textArea.value = textToCopy;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copySuccess.style.display = 'block';
+                setTimeout(() => { copySuccess.style.display = 'none'; }, 2000);
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+                copySuccess.textContent = 'Failed to copy!';
+                copySuccess.style.color = 'red';
+                copySuccess.style.display = 'block';
+            }
+            document.body.removeChild(textArea);
+        });
+    </script>
+</body>
+</html>
