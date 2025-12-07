@@ -323,224 +323,6 @@
 
             <textarea id="output" readonly
                 class="w-full h-96 p-4 border border-gray-300 rounded-lg bg-gray-50 shadow-inner resize-none"></textarea>
-
-            <div id="copy-success" class="text-green-600 font-semibold text-center mt-2" style="display: none;">
-                Copied to clipboard!
-            </div>
-
-            <p class="text-sm text-center text-red-600 font-semibold mt-4">
-                <strong>Not Legal Advice</strong><br>
-                This tool generates a basic template for informational purposes only. It is <strong>NOT</strong> a
-                substitute for professional legal advice. You are responsible for ensuring your final policy complies
-                with all applicable laws (like GDPR, CCPA, etc.). You must consult with a qualified legal professional
-                to ensure this policy is compliant and suitable for your needs.
-                <label for="aup-spam">Spamming or harassing users</label>
-        </div>
-        <div class="checkbox-group">
-            <input type="checkbox" id="aup-reverse-engineer" checked>
-            <label for="aup-reverse-engineer">Reverse engineering</label>
-        </div>
-        <div class="checkbox-group">
-            <input type="checkbox" id="aup-data-mining" checked>
-            <label for="aup-data-mining">Data mining or scraping</label>
-        </div>
-        <div class="checkbox-group">
-            <input type="checkbox" id="aup-infringement" checked>
-            <label for="aup-infringement">IP Infringement</label>
-        </div>
-        </div>
-        </fieldset>
-
-        <!-- Section: User-Generated Content -->
-        <fieldset>
-            <legend>User-Generated Content</legend>
-            <div class="checkbox-group">
-                <input type="checkbox" id="user-content">
-                <label for="user-content">Do users post content?</label>
-            </div>
-        </fieldset>
-
-        <!-- Section: Payments -->
-        <fieldset>
-            <legend>Payments and Billing</legend>
-            <div class="checkbox-group">
-                <input type="checkbox" id="payments">
-                <label for="payments">Do you sell products/services?</label>
-            </div>
-        </fieldset>
-
-        <!-- Section: Third-Party Links -->
-        <fieldset>
-            <legend>Third-Party Links</legend>
-            <div class="checkbox-group">
-                <input type="checkbox" id="third-party-links">
-                <label for="third-party-links">Links to third-party sites?</label>
-            </div>
-        </fieldset>
-
-        <!-- Section: Termination -->
-        <fieldset>
-            <legend>Termination</legend>
-            <div class="checkbox-group">
-                <input type="checkbox" id="termination-clause" checked>
-                <label for="termination-clause">Include termination clause?</label>
-            </div>
-        </fieldset>
-
-        <!-- Section: Disclaimers -->
-        <fieldset>
-            <legend>Disclaimers & Liability</legend>
-            <div class="checkbox-group">
-                <input type="checkbox" id="disclaimer-as-is" checked>
-                <label for="disclaimer-as-is">"AS IS" Disclaimer</label>
-            </div>
-            <div class="checkbox-group">
-                <input type="checkbox" id="limitation-liability" checked>
-                <label for="limitation-liability">Limitation of Liability</label>
-            </div>
-        </fieldset>
-        </div>
-
-        <!-- Privacy Policy Specific Fields -->
-        <div id="content-privacy" class="hidden">
-            <h3 class="text-xl font-bold text-gray-800 mb-4">Privacy Policy Settings</h3>
-
-            <fieldset>
-                <legend>Data Collection</legend>
-                <p class="text-gray-600 mb-2">What data do you collect?</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="data-personal">
-                        <label for="data-personal">Personal Info (Name, Email, etc.)</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="data-payment">
-                        <label for="data-payment">Payment Info</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="data-usage" checked>
-                        <label for="data-usage">Usage Data (IP, Browser, etc.)</label>
-                    </div>
-                </div>
-            </fieldset>
-
-            <fieldset>
-                <legend>Tracking & Cookies</legend>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="cookies" checked>
-                    <label for="cookies">Do you use Cookies?</label>
-                </div>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="analytics">
-                    <label for="analytics">Do you use Analytics (e.g., Google Analytics)?</label>
-                </div>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="ads">
-                    <label for="ads">Do you show Ads (e.g., AdSense)?</label>
-                </div>
-            </fieldset>
-
-            <fieldset>
-                <legend>Compliance</legend>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="gdpr">
-                    <label for="gdpr">Include GDPR (EU) Rights?</label>
-                </div>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="ccpa">
-                    <label for="ccpa">Include CCPA (California) Rights?</label>
-                </div>
-            </fieldset>
-        </div>
-
-        <!-- Output Format -->
-        <fieldset class="mt-6 bg-blue-50 border-blue-200">
-            <legend class="text-blue-800">Output Format</legend>
-            <div class="flex space-x-6">
-                <div class="checkbox-group">
-                    <input type="radio" name="format" id="format-text" value="text" checked>
-                    <label for="format-text">Plain Text</label>
-                </div>
-                <div class="checkbox-group">
-                    <input type="radio" name="format" id="format-html" value="html">
-                    <label for="format-html">HTML</label>
-                </div>
-                <div class="checkbox-group">
-                    <input type="radio" name="format" id="format-markdown" value="markdown">
-                    <label for="format-markdown">Markdown</label>
-                </div>
-            </div>
-        </fieldset>
-
-        <!-- Generate Button -->
-        <div class="text-center mt-8">
-            <button type="button" id="generate-btn"
-                class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:bg-blue-700 transition-all transform hover:scale-105">
-                Generate Terms
-            </button>
-        </div>
-        </form>
-
-        <!-- Coqui Cloud Static Promo Block -->
-        <!-- This is a static block and does not use any JavaScript -->
-        <div id="coqui-promo"
-            class="mt-12 mb-6 p-6 bg-gray-50 border border-gray-200 rounded-lg shadow-md max-w-4xl mx-auto">
-            <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-4">
-                <img src="https://coqui.cloud/web/image/website/1/logo/Coqui%20Cloud?unique=5caaf69"
-                    alt="Coqui Cloud Logo" class="h-12 w-auto mb-4 sm:mb-0">
-                <div class="flex-1">
-                    <h3 class="text-lg font-semibold text-gray-900">Need a Custom Tool Like This?</h3>
-                    <p class="text-sm text-gray-600">This free generator was built by the experts at <strong>Coqui
-                            Cloud</strong>.</p>
-                </div>
-                <a href="https://coqui.cloud/contactus" target="_blank" rel="noopener noreferrer"
-                    class="mt-4 sm:mt-0 sm:ml-auto whitespace-nowrap inline-block bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow hover:bg-blue-700 transition-colors">
-                    Contact Us Today
-                </a>
-            </div>
-            <p class="mt-4 text-gray-700 text-sm">
-                We build custom applications, automate business workflows, and are certified Odoo implementation
-                partners. If you have an idea for a tool to save you time, let's talk.
-            </p>
-        </div>
-        <!-- End of Static Promo Block -->
-
-        <!-- Output Area -->
-        <div id="output-container" class="mt-10" style="display: none;">
-            <h2 class="text-2xl font-bold text-center mb-6">Your Generated Terms & Conditions</h2>
-
-            <div id="output-controls" class="flex justify-end mb-4">
-                <button type="button" id="copy-btn"
-                    class="bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow hover:bg-green-700 transition-all">
-                    Copy to Clipboard
-                </button>
-            </div>
-
-            <textarea id="output" readonly
-                class="w-full h-96 p-4 border border-gray-300 rounded-lg bg-gray-50 shadow-inner resize-none"></textarea>
-
-            <div id="copy-success" class="text-green-600 font-semibold text-center mt-2" style="display: none;">
-                Copied to clipboard!
-            </div>
-
-            <p class="text-sm text-center text-red-600 font-semibold mt-4">
-                <strong>Not Legal Advice</strong><br>
-                This tool generates a basic template for informational purposes only. It is <strong>NOT</strong> a
-                substitute for professional legal advice. You are responsible for ensuring your final policy complies
-                with all applicable laws (like GDPR, CCPA, etc.). You must consult with a qualified legal professional
-                to ensure this policy is compliant and suitable for your needs.
-            </p>
-        </div>
-
-    </main>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-
-            // --- Elements ---
-            const form = document.getElementById('generator-form');
-            const generateBtn = document.getElementById('generate-btn');
-            const outputContainer = document.getElementById('output-container');
             const outputEl = document.getElementById('output');
             const copyBtn = document.getElementById('copy-btn');
             const copySuccessEl = document.getElementById('copy-success');
@@ -554,24 +336,24 @@
 
             // --- Tab Logic ---
             function switchTab(mode) {
-                currentMode = mode;
-                if (mode === 'terms') {
-                    tabTerms.classList.add('text-blue-600', 'border-blue-600');
-                    tabTerms.classList.remove('text-gray-500');
-                    tabPrivacy.classList.remove('text-blue-600', 'border-blue-600');
-                    tabPrivacy.classList.add('text-gray-500');
+            currentMode = mode;
+            if (mode === 'terms') {
+            tabTerms.classList.add('text-blue-600', 'border-blue-600');
+            tabTerms.classList.remove('text-gray-500');
+            tabPrivacy.classList.remove('text-blue-600', 'border-blue-600');
+            tabPrivacy.classList.add('text-gray-500');
 
-                    contentTerms.classList.remove('hidden');
-                    contentPrivacy.classList.add('hidden');
-                } else {
-                    tabPrivacy.classList.add('text-blue-600', 'border-blue-600');
-                    tabPrivacy.classList.remove('text-gray-500');
-                    tabTerms.classList.remove('text-blue-600', 'border-blue-600');
-                    tabTerms.classList.add('text-gray-500');
+            contentTerms.classList.remove('hidden');
+            contentPrivacy.classList.add('hidden');
+            } else {
+            tabPrivacy.classList.add('text-blue-600', 'border-blue-600');
+            tabPrivacy.classList.remove('text-gray-500');
+            tabTerms.classList.remove('text-blue-600', 'border-blue-600');
+            tabTerms.classList.add('text-gray-500');
 
-                    contentPrivacy.classList.remove('hidden');
-                    contentTerms.classList.add('hidden');
-                }
+            contentPrivacy.classList.remove('hidden');
+            contentTerms.classList.add('hidden');
+            }
             }
 
             tabTerms.addEventListener('click', () => switchTab('terms'));
@@ -579,46 +361,46 @@
 
             // --- Persistence Logic ---
             function saveState() {
-                const data = {};
-                const inputs = form.querySelectorAll('input');
-                inputs.forEach(input => {
-                    if (input.type === 'checkbox' || input.type === 'radio') {
-                        if (input.checked) data[input.id] = input.value || true;
-                    } else {
-                        data[input.id] = input.value;
-                    }
-                });
-                localStorage.setItem('legal_generator_state', JSON.stringify(data));
+            const data = {};
+            const inputs = form.querySelectorAll('input');
+            inputs.forEach(input => {
+            if (input.type === 'checkbox' || input.type === 'radio') {
+            if (input.checked) data[input.id] = input.value || true;
+            } else {
+            data[input.id] = input.value;
+            }
+            });
+            localStorage.setItem('legal_generator_state', JSON.stringify(data));
             }
 
             function loadState() {
-                const saved = localStorage.getItem('legal_generator_state');
-                if (!saved) return;
-                try {
-                    const data = JSON.parse(saved);
-                    for (const key in data) {
-                        const el = document.getElementById(key);
-                        if (!el) continue;
-                        if (el.type === 'checkbox') {
-                            el.checked = true;
-                        } else if (el.type === 'radio') {
-                            // Radio buttons need special handling if we saved the ID of the checked one
-                            // But here we saved by ID if checked.
-                            // Actually, for radios, we should save the name and value.
-                            // Let's simplify: just save values for text, and checked state for checkboxes.
-                            // For radios, we'll handle them separately if needed, but for now let's stick to simple ID matching.
-                            // The previous save logic for radios was a bit flawed. Let's fix save/load.
-                        } else {
-                            el.value = data[key];
-                        }
-                    }
-                    // Fix radio buttons specifically
-                    const format = data['format-text'] ? 'text' : (data['format-html'] ? 'html' : 'markdown');
-                    document.getElementById(`format-${format}`).checked = true;
+            const saved = localStorage.getItem('legal_generator_state');
+            if (!saved) return;
+            try {
+            const data = JSON.parse(saved);
+            for (const key in data) {
+            const el = document.getElementById(key);
+            if (!el) continue;
+            if (el.type === 'checkbox') {
+            el.checked = true;
+            } else if (el.type === 'radio') {
+            // Radio buttons need special handling if we saved the ID of the checked one
+            // But here we saved by ID if checked.
+            // Actually, for radios, we should save the name and value.
+            // Let's simplify: just save values for text, and checked state for checkboxes.
+            // For radios, we'll handle them separately if needed, but for now let's stick to simple ID matching.
+            // The previous save logic for radios was a bit flawed. Let's fix save/load.
+            } else {
+            el.value = data[key];
+            }
+            }
+            // Fix radio buttons specifically
+            const format = data['format-text'] ? 'text' : (data['format-html'] ? 'html' : 'markdown');
+            document.getElementById(`format-${format}`).checked = true;
 
-                } catch (e) {
-                    console.error("Error loading state", e);
-                }
+            } catch (e) {
+            console.error("Error loading state", e);
+            }
             }
 
             // improved save/load
@@ -627,148 +409,170 @@
 
             // --- Formatting Helpers ---
             function formatSection(title, content, format) {
-                if (format === 'html') {
-                    return `<h2>${title}</h2>\n<p>${content}</p>\n\n`;
-                } else if (format === 'markdown') {
-                    return `## ${title}\n\n${content}\n\n`;
-                } else {
-                    return `===== ${title.toUpperCase()} =====\n\n${content}\n\n`;
-                }
+            if (format === 'html') {
+            return `
+            <h2>${title}</h2>\n<p>${content}</p>\n\n`;
+            } else if (format === 'markdown') {
+            return `## ${title}\n\n${content}\n\n`;
+            } else {
+            return `===== ${title.toUpperCase()} =====\n\n${content}\n\n`;
+            }
             }
 
             function formatList(items, format) {
-                if (format === 'html') {
-                    return `<ul>\n${items.map(i => `  <li>${i}</li>`).join('\n')}\n</ul>\n`;
-                } else if (format === 'markdown') {
-                    return items.map(i => `- ${i}`).join('\n') + '\n';
-                } else {
-                    return items.map(i => `- ${i}`).join('\n') + '\n';
-                }
+            if (format === 'html') {
+            return `<ul>\n${items.map(i => ` <li>${i}</li>`).join('\n')}\n</ul>\n`;
+            } else if (format === 'markdown') {
+            return items.map(i => `- ${i}`).join('\n') + '\n';
+            } else {
+            return items.map(i => `- ${i}`).join('\n') + '\n';
+            }
             }
 
             function formatHeader(title, date, format) {
-                if (format === 'html') {
-                    return `<h1>${title}</h1>\n<p><strong>Last updated:</strong> ${date}</p>\n\n`;
-                } else if (format === 'markdown') {
-                    return `# ${title}\n\n**Last updated:** ${date}\n\n`;
-                } else {
-                    return `${title.toUpperCase()}\n\nLast updated: ${date}\n\n`;
-                }
+            if (format === 'html') {
+            return `<h1>${title}</h1>\n<p><strong>Last updated:</strong> ${date}</p>\n\n`;
+            } else if (format === 'markdown') {
+            return `# ${title}\n\n**Last updated:** ${date}\n\n`;
+            } else {
+            return `${title.toUpperCase()}\n\nLast updated: ${date}\n\n`;
+            }
             }
 
             // --- Generators ---
             function generateTerms(data, format) {
-                const { companyName, websiteName, websiteUrl, location, contact, today } = data;
-                let text = formatHeader('Terms and Conditions', today, format);
+            const { companyName, websiteName, websiteUrl, location, contact, today } = data;
+            let text = formatHeader('Terms and Conditions', today, format);
 
-                text += formatSection('Introduction',
-                    `Welcome to ${websiteName}! These Terms and Conditions govern your use of our website located at ${websiteUrl} operated by ${companyName}.`, format);
+            text += formatSection('Introduction',
+            `Welcome to ${websiteName}! These Terms and Conditions govern your use of our website located at
+            ${websiteUrl} operated by ${companyName}.`, format);
 
-                if (document.getElementById('user-accounts').checked) {
-                    text += formatSection('User Accounts',
-                        `When you create an account with us, you must provide us information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account on our Service.`, format);
-                }
+            if (document.getElementById('user-accounts').checked) {
+            text += formatSection('User Accounts',
+            `When you create an account with us, you must provide us information that is accurate, complete, and current
+            at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination
+            of your account on our Service.`, format);
+            }
 
-                const prohibited = [];
-                if (document.getElementById('aup-illegal').checked) prohibited.push('Unlawful acts');
-                if (document.getElementById('aup-spam').checked) prohibited.push('Spamming or harassing others');
-                if (document.getElementById('aup-data-mining').checked) prohibited.push('Data mining or scraping');
+            const prohibited = [];
+            if (document.getElementById('aup-illegal').checked) prohibited.push('Unlawful acts');
+            if (document.getElementById('aup-spam').checked) prohibited.push('Spamming or harassing others');
+            if (document.getElementById('aup-data-mining').checked) prohibited.push('Data mining or scraping');
 
-                if (prohibited.length > 0) {
-                    let content = `You agree not to use the Service for any of the following:\n` + formatList(prohibited, format);
-                    text += formatSection('Prohibited Uses', content, format);
-                }
+            if (prohibited.length > 0) {
+            let content = `You agree not to use the Service for any of the following:\n` + formatList(prohibited,
+            format);
+            text += formatSection('Prohibited Uses', content, format);
+            }
 
-                // ... (Add other sections similarly simplified for brevity but functional) ...
-                text += formatSection('Governing Law', `These Terms shall be governed and construed in accordance with the laws of ${location}, without regard to its conflict of law provisions.`, format);
+            // ... (Add other sections similarly simplified for brevity but functional) ...
+            text += formatSection('Governing Law', `These Terms shall be governed and construed in accordance with the
+            laws of ${location}, without regard to its conflict of law provisions.`, format);
 
-                text += formatSection('Contact Us', `If you have any questions about these Terms, please contact us at ${contact}.`, format);
+            text += formatSection('Contact Us', `If you have any questions about these Terms, please contact us at
+            ${contact}.`, format);
 
-                return text;
+            return text;
             }
 
             function generatePrivacy(data, format) {
-                const { companyName, websiteName, websiteUrl, location, contact, today } = data;
-                let text = formatHeader('Privacy Policy', today, format);
+            const { companyName, websiteName, websiteUrl, location, contact, today } = data;
+            let text = formatHeader('Privacy Policy', today, format);
 
-                text += formatSection('Introduction',
-                    `At ${websiteName}, accessible from ${websiteUrl}, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by ${websiteName} and how we use it.`, format);
+            text += formatSection('Introduction',
+            `At ${websiteName}, accessible from ${websiteUrl}, one of our main priorities is the privacy of our
+            visitors. This Privacy Policy document contains types of information that is collected and recorded by
+            ${websiteName} and how we use it.`, format);
 
-                const collected = [];
-                if (document.getElementById('data-personal').checked) collected.push('Personal identification information (Name, email address, phone number, etc.)');
-                if (document.getElementById('data-payment').checked) collected.push('Payment details (Credit card information, billing address)');
-                if (document.getElementById('data-usage').checked) collected.push('Log Data (IP address, browser type, pages visited)');
+            const collected = [];
+            if (document.getElementById('data-personal').checked) collected.push('Personal identification information
+            (Name, email address, phone number, etc.)');
+            if (document.getElementById('data-payment').checked) collected.push('Payment details (Credit card
+            information, billing address)');
+            if (document.getElementById('data-usage').checked) collected.push('Log Data (IP address, browser type, pages
+            visited)');
 
-                if (collected.length > 0) {
-                    text += formatSection('Information We Collect', `We collect the following information:\n` + formatList(collected, format), format);
-                }
+            if (collected.length > 0) {
+            text += formatSection('Information We Collect', `We collect the following information:\n` +
+            formatList(collected, format), format);
+            }
 
-                if (document.getElementById('cookies').checked) {
-                    text += formatSection('Cookies and Web Beacons',
-                        `Like any other website, ${websiteName} uses 'cookies'. These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited.`, format);
-                }
+            if (document.getElementById('cookies').checked) {
+            text += formatSection('Cookies and Web Beacons',
+            `Like any other website, ${websiteName} uses 'cookies'. These cookies are used to store information
+            including visitors' preferences, and the pages on the website that the visitor accessed or visited.`,
+            format);
+            }
 
-                if (document.getElementById('gdpr').checked) {
-                    text += formatSection('GDPR Data Protection Rights',
-                        `We would like to make sure you are fully aware of all of your data protection rights. Every user is entitled to the following:\n` +
-                        formatList(['The right to access', 'The right to rectification', 'The right to erasure', 'The right to restrict processing', 'The right to object to processing', 'The right to data portability'], format), format);
-                }
+            if (document.getElementById('gdpr').checked) {
+            text += formatSection('GDPR Data Protection Rights',
+            `We would like to make sure you are fully aware of all of your data protection rights. Every user is
+            entitled to the following:\n` +
+            formatList(['The right to access', 'The right to rectification', 'The right to erasure', 'The right to
+            restrict processing', 'The right to object to processing', 'The right to data portability'], format),
+            format);
+            }
 
-                if (document.getElementById('ccpa').checked) {
-                    text += formatSection('CCPA Privacy Rights',
-                        `Under the CCPA, among other rights, California consumers have the right to:\n` +
-                        formatList(['Request that a business that collects a consumer\'s personal data disclose the categories and specific pieces of personal data that a business has collected about consumers.', 'Request that a business delete any personal data about the consumer that a business has collected.', 'Request that a business that sells a consumer\'s personal data, not sell the consumer\'s personal data.'], format), format);
-                }
+            if (document.getElementById('ccpa').checked) {
+            text += formatSection('CCPA Privacy Rights',
+            `Under the CCPA, among other rights, California consumers have the right to:\n` +
+            formatList(['Request that a business that collects a consumer\'s personal data disclose the categories and
+            specific pieces of personal data that a business has collected about consumers.', 'Request that a business
+            delete any personal data about the consumer that a business has collected.', 'Request that a business that
+            sells a consumer\'s personal data, not sell the consumer\'s personal data.'], format), format);
+            }
 
-                text += formatSection('Contact Us', `If you have any questions about this Privacy Policy, please contact us at ${contact}.`, format);
+            text += formatSection('Contact Us', `If you have any questions about this Privacy Policy, please contact us
+            at ${contact}.`, format);
 
-                return text;
+            return text;
             }
 
             // --- Main Generate Handler ---
             generateBtn.addEventListener('click', () => {
-                const data = {
-                    companyName: document.getElementById('company-name').value.trim() || '[Company Name]',
-                    websiteName: document.getElementById('website-name').value.trim() || '[Website Name]',
-                    websiteUrl: document.getElementById('website-url').value.trim() || '[Website URL]',
-                    location: document.getElementById('company-location').value.trim() || '[Jurisdiction]',
-                    contact: document.getElementById('contact-email').value.trim() || '[Contact Info]',
-                    today: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
-                };
+            const data = {
+            companyName: document.getElementById('company-name').value.trim() || '[Company Name]',
+            websiteName: document.getElementById('website-name').value.trim() || '[Website Name]',
+            websiteUrl: document.getElementById('website-url').value.trim() || '[Website URL]',
+            location: document.getElementById('company-location').value.trim() || '[Jurisdiction]',
+            contact: document.getElementById('contact-email').value.trim() || '[Contact Info]',
+            today: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+            };
 
-                let format = 'text';
-                if (document.getElementById('format-html').checked) format = 'html';
-                if (document.getElementById('format-markdown').checked) format = 'markdown';
+            let format = 'text';
+            if (document.getElementById('format-html').checked) format = 'html';
+            if (document.getElementById('format-markdown').checked) format = 'markdown';
 
-                let output = '';
-                if (currentMode === 'terms') {
-                    output = generateTerms(data, format);
-                } else {
-                    output = generatePrivacy(data, format);
-                }
+            let output = '';
+            if (currentMode === 'terms') {
+            output = generateTerms(data, format);
+            } else {
+            output = generatePrivacy(data, format);
+            }
 
-                outputEl.value = output;
-                outputContainer.style.display = 'block';
-                outputContainer.scrollIntoView({ behavior: 'smooth' });
+            outputEl.value = output;
+            outputContainer.style.display = 'block';
+            outputContainer.scrollIntoView({ behavior: 'smooth' });
             });
 
             // --- Copy Handler ---
             copyBtn.addEventListener('click', () => {
-                navigator.clipboard.writeText(outputEl.value).then(() => {
-                    copySuccessEl.style.display = 'block';
-                    setTimeout(() => copySuccessEl.style.display = 'none', 2000);
-                }).catch(err => {
-                    console.error('Failed to copy: ', err);
-                    // Fallback
-                    outputEl.select();
-                    document.execCommand('copy');
-                });
+            navigator.clipboard.writeText(outputEl.value).then(() => {
+            copySuccessEl.style.display = 'block';
+            setTimeout(() => copySuccessEl.style.display = 'none', 2000);
+            }).catch(err => {
+            console.error('Failed to copy: ', err);
+            // Fallback
+            outputEl.select();
+            document.execCommand('copy');
+            });
             });
 
             // --- Init ---
             loadState();
-        });
-    </script>
+            });
+            </script>
 </body>
 
 </html>
