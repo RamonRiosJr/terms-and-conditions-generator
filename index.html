@@ -299,53 +299,9 @@
                             Cloud</strong>.</p>
                 </div>
                 <a href="https://coqui.cloud/contactus" target="_blank" rel="noopener noreferrer"
-                    class="mt-4 sm:mt-0 sm:ml-auto whitespace-nowrap inline-block bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow hover:bg-blue-700 transition-colors">
-                    Contact Us Today
-                </a>
-            </div>
-            <p class="mt-4 text-gray-700 text-sm">
-                We build custom applications, automate business workflows, and are certified Odoo implementation
-                partners. If you have an idea for a tool to save you time, let's talk.
-            </p>
-        </div>
-        <!-- End of Static Promo Block -->
-
-        <!-- Output Area -->
-        <div id="output-container" class="mt-10" style="display: none;">
-            <h2 class="text-2xl font-bold text-center mb-6">Your Generated Terms & Conditions</h2>
-
-            <div id="output-controls" class="flex justify-end mb-4">
-                <button type="button" id="copy-btn"
-                    class="bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow hover:bg-green-700 transition-all">
-                    const tabPrivacy = document.getElementById('tab-privacy');
-                    const contentTerms = document.getElementById('content-terms');
-                    const contentPrivacy = document.getElementById('content-privacy');
-
-                    let currentMode = 'terms'; // 'terms' or 'privacy'
-
-                    // --- Tab Logic ---
-                    function switchTab(mode) {
-                    currentMode = mode;
-                    if (mode === 'terms') {
-                    tabTerms.classList.add('text-blue-600', 'border-blue-600');
-                    tabTerms.classList.remove('text-gray-500');
-                    tabPrivacy.classList.remove('text-blue-600', 'border-blue-600');
-                    tabPrivacy.classList.add('text-gray-500');
-
-                    contentTerms.classList.remove('hidden');
-                    contentPrivacy.classList.add('hidden');
-                    } else {
-                    tabPrivacy.classList.add('text-blue-600', 'border-blue-600');
-                    tabPrivacy.classList.remove('text-gray-500');
-                    tabTerms.classList.remove('text-blue-600', 'border-blue-600');
-                    tabTerms.classList.add('text-gray-500');
-
-                    contentPrivacy.classList.remove('hidden');
-                    contentTerms.classList.add('hidden');
-                    }
-                    }
-
-                    tabTerms.addEventListener('click', () => switchTab('terms'));
+                    tabTerms.classList.add('text-gray-500'); contentPrivacy.classList.remove('hidden');
+                    contentTerms.classList.add('hidden'); } } tabTerms.addEventListener('click', ()=>
+                    switchTab('terms'));
                     tabPrivacy.addEventListener('click', () => switchTab('privacy'));
 
                     // --- Persistence Logic ---
