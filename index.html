@@ -317,262 +317,267 @@
             <div id="output-controls" class="flex justify-end mb-4">
                 <button type="button" id="copy-btn"
                     class="bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow hover:bg-green-700 transition-all">
-                    Copy to Clipboard
-                </button>
-            </div>
+                    const tabPrivacy = document.getElementById('tab-privacy');
+                    const contentTerms = document.getElementById('content-terms');
+                    const contentPrivacy = document.getElementById('content-privacy');
 
-            <textarea id="output" readonly
-                class="w-full h-96 p-4 border border-gray-300 rounded-lg bg-gray-50 shadow-inner resize-none"></textarea>
-            const outputEl = document.getElementById('output');
-            const copyBtn = document.getElementById('copy-btn');
-            const copySuccessEl = document.getElementById('copy-success');
+                    let currentMode = 'terms'; // 'terms' or 'privacy'
 
-            const tabTerms = document.getElementById('tab-terms');
-            const tabPrivacy = document.getElementById('tab-privacy');
-            const contentTerms = document.getElementById('content-terms');
-            const contentPrivacy = document.getElementById('content-privacy');
+                    // --- Tab Logic ---
+                    function switchTab(mode) {
+                    currentMode = mode;
+                    if (mode === 'terms') {
+                    tabTerms.classList.add('text-blue-600', 'border-blue-600');
+                    tabTerms.classList.remove('text-gray-500');
+                    tabPrivacy.classList.remove('text-blue-600', 'border-blue-600');
+                    tabPrivacy.classList.add('text-gray-500');
 
-            let currentMode = 'terms'; // 'terms' or 'privacy'
+                    contentTerms.classList.remove('hidden');
+                    contentPrivacy.classList.add('hidden');
+                    } else {
+                    tabPrivacy.classList.add('text-blue-600', 'border-blue-600');
+                    tabPrivacy.classList.remove('text-gray-500');
+                    tabTerms.classList.remove('text-blue-600', 'border-blue-600');
+                    tabTerms.classList.add('text-gray-500');
 
-            // --- Tab Logic ---
-            function switchTab(mode) {
-            currentMode = mode;
-            if (mode === 'terms') {
-            tabTerms.classList.add('text-blue-600', 'border-blue-600');
-            tabTerms.classList.remove('text-gray-500');
-            tabPrivacy.classList.remove('text-blue-600', 'border-blue-600');
-            tabPrivacy.classList.add('text-gray-500');
+                    contentPrivacy.classList.remove('hidden');
+                    contentTerms.classList.add('hidden');
+                    }
+                    }
 
-            contentTerms.classList.remove('hidden');
-            contentPrivacy.classList.add('hidden');
-            } else {
-            tabPrivacy.classList.add('text-blue-600', 'border-blue-600');
-            tabPrivacy.classList.remove('text-gray-500');
-            tabTerms.classList.remove('text-blue-600', 'border-blue-600');
-            tabTerms.classList.add('text-gray-500');
+                    tabTerms.addEventListener('click', () => switchTab('terms'));
+                    tabPrivacy.addEventListener('click', () => switchTab('privacy'));
 
-            contentPrivacy.classList.remove('hidden');
-            contentTerms.classList.add('hidden');
-            }
-            }
+                    // --- Persistence Logic ---
+                    function saveState() {
+                    const data = {};
+                    const inputs = form.querySelectorAll('input');
+                    inputs.forEach(input => {
+                    if (input.type === 'checkbox' || input.type === 'radio') {
+                    if (input.checked) data[input.id] = input.value || true;
+                    } else {
+                    data[input.id] = input.value;
+                    }
+                    });
+                    localStorage.setItem('legal_generator_state', JSON.stringify(data));
+                    }
 
-            tabTerms.addEventListener('click', () => switchTab('terms'));
-            tabPrivacy.addEventListener('click', () => switchTab('privacy'));
+                    function loadState() {
+                    const saved = localStorage.getItem('legal_generator_state');
+                    if (!saved) return;
+                    try {
+                    const data = JSON.parse(saved);
+                    for (const key in data) {
+                    const el = document.getElementById(key);
+                    if (!el) continue;
+                    if (el.type === 'checkbox') {
+                    el.checked = true;
+                    } else if (el.type === 'radio') {
+                    // Radio buttons need special handling if we saved the ID of the checked one
+                    // But here we saved by ID if checked.
+                    // Actually, for radios, we should save the name and value.
+                    // Let's simplify: just save values for text, and checked state for checkboxes.
+                    // For radios, we'll handle them separately if needed, but for now let's stick to simple ID
+                    matching.
+                    // The previous save logic for radios was a bit flawed. Let's fix save/load.
+                    } else {
+                    el.value = data[key];
+                    }
+                    }
+                    // Fix radio buttons specifically
+                    const format = data['format-text'] ? 'text' : (data['format-html'] ? 'html' : 'markdown');
+                    document.getElementById(`format-${format}`).checked = true;
 
-            // --- Persistence Logic ---
-            function saveState() {
-            const data = {};
-            const inputs = form.querySelectorAll('input');
-            inputs.forEach(input => {
-            if (input.type === 'checkbox' || input.type === 'radio') {
-            if (input.checked) data[input.id] = input.value || true;
-            } else {
-            data[input.id] = input.value;
-            }
-            });
-            localStorage.setItem('legal_generator_state', JSON.stringify(data));
-            }
+                    } catch (e) {
+                    console.error("Error loading state", e);
+                    }
+                    }
 
-            function loadState() {
-            const saved = localStorage.getItem('legal_generator_state');
-            if (!saved) return;
-            try {
-            const data = JSON.parse(saved);
-            for (const key in data) {
-            const el = document.getElementById(key);
-            if (!el) continue;
-            if (el.type === 'checkbox') {
-            el.checked = true;
-            } else if (el.type === 'radio') {
-            // Radio buttons need special handling if we saved the ID of the checked one
-            // But here we saved by ID if checked.
-            // Actually, for radios, we should save the name and value.
-            // Let's simplify: just save values for text, and checked state for checkboxes.
-            // For radios, we'll handle them separately if needed, but for now let's stick to simple ID matching.
-            // The previous save logic for radios was a bit flawed. Let's fix save/load.
-            } else {
-            el.value = data[key];
-            }
-            }
-            // Fix radio buttons specifically
-            const format = data['format-text'] ? 'text' : (data['format-html'] ? 'html' : 'markdown');
-            document.getElementById(`format-${format}`).checked = true;
+                    // improved save/load
+                    form.addEventListener('change', saveState);
+                    form.addEventListener('input', saveState);
 
-            } catch (e) {
-            console.error("Error loading state", e);
-            }
-            }
+                    // --- Formatting Helpers ---
+                    function formatSection(title, content, format) {
+                    if (format === 'html') {
+                    return `
+                    <h2>${title}</h2>\n<p>${content}</p>\n\n`;
+                    } else if (format === 'markdown') {
+                    return `## ${title}\n\n${content}\n\n`;
+                    } else {
+                    return `===== ${title.toUpperCase()} =====\n\n${content}\n\n`;
+                    }
+                    }
 
-            // improved save/load
-            form.addEventListener('change', saveState);
-            form.addEventListener('input', saveState);
+                    function formatList(items, format) {
+                    if (format === 'html') {
+                    return `<ul>\n${items.map(i => ` <li>${i}</li>`).join('\n')}\n</ul>\n`;
+                    } else if (format === 'markdown') {
+                    return items.map(i => `- ${i}`).join('\n') + '\n';
+                    } else {
+                    return items.map(i => `- ${i}`).join('\n') + '\n';
+                    }
+                    }
 
-            // --- Formatting Helpers ---
-            function formatSection(title, content, format) {
-            if (format === 'html') {
-            return `
-            <h2>${title}</h2>\n<p>${content}</p>\n\n`;
-            } else if (format === 'markdown') {
-            return `## ${title}\n\n${content}\n\n`;
-            } else {
-            return `===== ${title.toUpperCase()} =====\n\n${content}\n\n`;
-            }
-            }
+                    function formatHeader(title, date, format) {
+                    if (format === 'html') {
+                    return `<h1>${title}</h1>\n<p><strong>Last updated:</strong> ${date}</p>\n\n`;
+                    } else if (format === 'markdown') {
+                    return `# ${title}\n\n**Last updated:** ${date}\n\n`;
+                    } else {
+                    return `${title.toUpperCase()}\n\nLast updated: ${date}\n\n`;
+                    }
+                    }
 
-            function formatList(items, format) {
-            if (format === 'html') {
-            return `<ul>\n${items.map(i => ` <li>${i}</li>`).join('\n')}\n</ul>\n`;
-            } else if (format === 'markdown') {
-            return items.map(i => `- ${i}`).join('\n') + '\n';
-            } else {
-            return items.map(i => `- ${i}`).join('\n') + '\n';
-            }
-            }
+                    // --- Generators ---
+                    function generateTerms(data, format) {
+                    const { companyName, websiteName, websiteUrl, location, contact, today } = data;
+                    let text = formatHeader('Terms and Conditions', today, format);
 
-            function formatHeader(title, date, format) {
-            if (format === 'html') {
-            return `<h1>${title}</h1>\n<p><strong>Last updated:</strong> ${date}</p>\n\n`;
-            } else if (format === 'markdown') {
-            return `# ${title}\n\n**Last updated:** ${date}\n\n`;
-            } else {
-            return `${title.toUpperCase()}\n\nLast updated: ${date}\n\n`;
-            }
-            }
+                    text += formatSection('Introduction',
+                    `Welcome to ${websiteName}! These Terms and Conditions govern your use of our website located at
+                    ${websiteUrl} operated by ${companyName}.`, format);
 
-            // --- Generators ---
-            function generateTerms(data, format) {
-            const { companyName, websiteName, websiteUrl, location, contact, today } = data;
-            let text = formatHeader('Terms and Conditions', today, format);
+                    if (document.getElementById('user-accounts').checked) {
+                    text += formatSection('User Accounts',
+                    `When you create an account with us, you must provide us information that is accurate, complete, and
+                    current
+                    at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate
+                    termination
+                    of your account on our Service.`, format);
+                    }
 
-            text += formatSection('Introduction',
-            `Welcome to ${websiteName}! These Terms and Conditions govern your use of our website located at
-            ${websiteUrl} operated by ${companyName}.`, format);
+                    const prohibited = [];
+                    if (document.getElementById('aup-illegal').checked) prohibited.push('Unlawful acts');
+                    if (document.getElementById('aup-spam').checked) prohibited.push('Spamming or harassing others');
+                    if (document.getElementById('aup-data-mining').checked) prohibited.push('Data mining or scraping');
 
-            if (document.getElementById('user-accounts').checked) {
-            text += formatSection('User Accounts',
-            `When you create an account with us, you must provide us information that is accurate, complete, and current
-            at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination
-            of your account on our Service.`, format);
-            }
+                    if (prohibited.length > 0) {
+                    let content = `You agree not to use the Service for any of the following:\n` +
+                    formatList(prohibited,
+                    format);
+                    text += formatSection('Prohibited Uses', content, format);
+                    }
 
-            const prohibited = [];
-            if (document.getElementById('aup-illegal').checked) prohibited.push('Unlawful acts');
-            if (document.getElementById('aup-spam').checked) prohibited.push('Spamming or harassing others');
-            if (document.getElementById('aup-data-mining').checked) prohibited.push('Data mining or scraping');
+                    // ... (Add other sections similarly simplified for brevity but functional) ...
+                    text += formatSection('Governing Law', `These Terms shall be governed and construed in accordance
+                    with the
+                    laws of ${location}, without regard to its conflict of law provisions.`, format);
 
-            if (prohibited.length > 0) {
-            let content = `You agree not to use the Service for any of the following:\n` + formatList(prohibited,
-            format);
-            text += formatSection('Prohibited Uses', content, format);
-            }
+                    text += formatSection('Contact Us', `If you have any questions about these Terms, please contact us
+                    at
+                    ${contact}.`, format);
 
-            // ... (Add other sections similarly simplified for brevity but functional) ...
-            text += formatSection('Governing Law', `These Terms shall be governed and construed in accordance with the
-            laws of ${location}, without regard to its conflict of law provisions.`, format);
+                    return text;
+                    }
 
-            text += formatSection('Contact Us', `If you have any questions about these Terms, please contact us at
-            ${contact}.`, format);
+                    function generatePrivacy(data, format) {
+                    const { companyName, websiteName, websiteUrl, location, contact, today } = data;
+                    let text = formatHeader('Privacy Policy', today, format);
 
-            return text;
-            }
+                    text += formatSection('Introduction',
+                    `At ${websiteName}, accessible from ${websiteUrl}, one of our main priorities is the privacy of our
+                    visitors. This Privacy Policy document contains types of information that is collected and recorded
+                    by
+                    ${websiteName} and how we use it.`, format);
 
-            function generatePrivacy(data, format) {
-            const { companyName, websiteName, websiteUrl, location, contact, today } = data;
-            let text = formatHeader('Privacy Policy', today, format);
+                    const collected = [];
+                    if (document.getElementById('data-personal').checked) collected.push('Personal identification
+                    information
+                    (Name, email address, phone number, etc.)');
+                    if (document.getElementById('data-payment').checked) collected.push('Payment details (Credit card
+                    information, billing address)');
+                    if (document.getElementById('data-usage').checked) collected.push('Log Data (IP address, browser
+                    type, pages
+                    visited)');
 
-            text += formatSection('Introduction',
-            `At ${websiteName}, accessible from ${websiteUrl}, one of our main priorities is the privacy of our
-            visitors. This Privacy Policy document contains types of information that is collected and recorded by
-            ${websiteName} and how we use it.`, format);
+                    if (collected.length > 0) {
+                    text += formatSection('Information We Collect', `We collect the following information:\n` +
+                    formatList(collected, format), format);
+                    }
 
-            const collected = [];
-            if (document.getElementById('data-personal').checked) collected.push('Personal identification information
-            (Name, email address, phone number, etc.)');
-            if (document.getElementById('data-payment').checked) collected.push('Payment details (Credit card
-            information, billing address)');
-            if (document.getElementById('data-usage').checked) collected.push('Log Data (IP address, browser type, pages
-            visited)');
+                    if (document.getElementById('cookies').checked) {
+                    text += formatSection('Cookies and Web Beacons',
+                    `Like any other website, ${websiteName} uses 'cookies'. These cookies are used to store information
+                    including visitors' preferences, and the pages on the website that the visitor accessed or
+                    visited.`,
+                    format);
+                    }
 
-            if (collected.length > 0) {
-            text += formatSection('Information We Collect', `We collect the following information:\n` +
-            formatList(collected, format), format);
-            }
+                    if (document.getElementById('gdpr').checked) {
+                    text += formatSection('GDPR Data Protection Rights',
+                    `We would like to make sure you are fully aware of all of your data protection rights. Every user is
+                    entitled to the following:\n` +
+                    formatList(['The right to access', 'The right to rectification', 'The right to erasure', 'The right
+                    to
+                    restrict processing', 'The right to object to processing', 'The right to data portability'],
+                    format),
+                    format);
+                    }
 
-            if (document.getElementById('cookies').checked) {
-            text += formatSection('Cookies and Web Beacons',
-            `Like any other website, ${websiteName} uses 'cookies'. These cookies are used to store information
-            including visitors' preferences, and the pages on the website that the visitor accessed or visited.`,
-            format);
-            }
+                    if (document.getElementById('ccpa').checked) {
+                    text += formatSection('CCPA Privacy Rights',
+                    `Under the CCPA, among other rights, California consumers have the right to:\n` +
+                    formatList(['Request that a business that collects a consumer\'s personal data disclose the
+                    categories and
+                    specific pieces of personal data that a business has collected about consumers.', 'Request that a
+                    business
+                    delete any personal data about the consumer that a business has collected.', 'Request that a
+                    business that
+                    sells a consumer\'s personal data, not sell the consumer\'s personal data.'], format), format);
+                    }
 
-            if (document.getElementById('gdpr').checked) {
-            text += formatSection('GDPR Data Protection Rights',
-            `We would like to make sure you are fully aware of all of your data protection rights. Every user is
-            entitled to the following:\n` +
-            formatList(['The right to access', 'The right to rectification', 'The right to erasure', 'The right to
-            restrict processing', 'The right to object to processing', 'The right to data portability'], format),
-            format);
-            }
+                    text += formatSection('Contact Us', `If you have any questions about this Privacy Policy, please
+                    contact us
+                    at ${contact}.`, format);
 
-            if (document.getElementById('ccpa').checked) {
-            text += formatSection('CCPA Privacy Rights',
-            `Under the CCPA, among other rights, California consumers have the right to:\n` +
-            formatList(['Request that a business that collects a consumer\'s personal data disclose the categories and
-            specific pieces of personal data that a business has collected about consumers.', 'Request that a business
-            delete any personal data about the consumer that a business has collected.', 'Request that a business that
-            sells a consumer\'s personal data, not sell the consumer\'s personal data.'], format), format);
-            }
+                    return text;
+                    }
 
-            text += formatSection('Contact Us', `If you have any questions about this Privacy Policy, please contact us
-            at ${contact}.`, format);
+                    // --- Main Generate Handler ---
+                    generateBtn.addEventListener('click', () => {
+                    const data = {
+                    companyName: document.getElementById('company-name').value.trim() || '[Company Name]',
+                    websiteName: document.getElementById('website-name').value.trim() || '[Website Name]',
+                    websiteUrl: document.getElementById('website-url').value.trim() || '[Website URL]',
+                    location: document.getElementById('company-location').value.trim() || '[Jurisdiction]',
+                    contact: document.getElementById('contact-email').value.trim() || '[Contact Info]',
+                    today: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+                    };
 
-            return text;
-            }
+                    let format = 'text';
+                    if (document.getElementById('format-html').checked) format = 'html';
+                    if (document.getElementById('format-markdown').checked) format = 'markdown';
 
-            // --- Main Generate Handler ---
-            generateBtn.addEventListener('click', () => {
-            const data = {
-            companyName: document.getElementById('company-name').value.trim() || '[Company Name]',
-            websiteName: document.getElementById('website-name').value.trim() || '[Website Name]',
-            websiteUrl: document.getElementById('website-url').value.trim() || '[Website URL]',
-            location: document.getElementById('company-location').value.trim() || '[Jurisdiction]',
-            contact: document.getElementById('contact-email').value.trim() || '[Contact Info]',
-            today: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
-            };
+                    let output = '';
+                    if (currentMode === 'terms') {
+                    output = generateTerms(data, format);
+                    } else {
+                    output = generatePrivacy(data, format);
+                    }
 
-            let format = 'text';
-            if (document.getElementById('format-html').checked) format = 'html';
-            if (document.getElementById('format-markdown').checked) format = 'markdown';
+                    outputEl.value = output;
+                    outputContainer.style.display = 'block';
+                    outputContainer.scrollIntoView({ behavior: 'smooth' });
+                    });
 
-            let output = '';
-            if (currentMode === 'terms') {
-            output = generateTerms(data, format);
-            } else {
-            output = generatePrivacy(data, format);
-            }
+                    // --- Copy Handler ---
+                    copyBtn.addEventListener('click', () => {
+                    navigator.clipboard.writeText(outputEl.value).then(() => {
+                    copySuccessEl.style.display = 'block';
+                    setTimeout(() => copySuccessEl.style.display = 'none', 2000);
+                    }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                    // Fallback
+                    outputEl.select();
+                    document.execCommand('copy');
+                    });
+                    });
 
-            outputEl.value = output;
-            outputContainer.style.display = 'block';
-            outputContainer.scrollIntoView({ behavior: 'smooth' });
-            });
-
-            // --- Copy Handler ---
-            copyBtn.addEventListener('click', () => {
-            navigator.clipboard.writeText(outputEl.value).then(() => {
-            copySuccessEl.style.display = 'block';
-            setTimeout(() => copySuccessEl.style.display = 'none', 2000);
-            }).catch(err => {
-            console.error('Failed to copy: ', err);
-            // Fallback
-            outputEl.select();
-            document.execCommand('copy');
-            });
-            });
-
-            // --- Init ---
-            loadState();
-            });
-            </script>
+                    // --- Init ---
+                    loadState();
+                    });
+                    </script>
 </body>
 
 </html>
